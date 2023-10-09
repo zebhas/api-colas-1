@@ -6,17 +6,18 @@
 package maxpq;
 
 import java.util.NoSuchElementException;
-import maxpq.MaxPQ;
 
 public class Main {
     public static void main(String[] args) {
         MaxPQ<Integer> maxPQ = new MaxPQ<>();
 
-        maxPQ.insert(10);
         maxPQ.insert(5);
-        maxPQ.insert(12);
-        maxPQ.insert(3);
-        maxPQ.insert(8);
+        maxPQ.insert(1);
+        maxPQ.insert(7);
+         maxPQ.insert(3);
+          maxPQ.insert(9);
+           maxPQ.insert(8);
+            maxPQ.insert(4);
 
         System.out.println("Cola de Prioridad: " + maxPQ);
 
@@ -33,3 +34,10 @@ public class Main {
         }
     }
 }
+
+
+     /**            1
+                 /     \
+               3         4
+             /   \     /   \
+           5     9   8     7 */
