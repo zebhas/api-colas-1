@@ -3,6 +3,11 @@
  * To change this template file, choose Tools | Templates
  * and open the template in the editor.
  */
+/*
+ * To change this license header, choose License Headers in Project Properties.
+ * To change this template file, choose Tools | Templates
+ * and open the template in the editor.
+ */
 package maxpq;
 
 import java.util.NoSuchElementException;
@@ -42,7 +47,7 @@ public class MaxPQ<Key extends Comparable<Key>> {
         pq[++n] = v;
         swim(n);
     }
-
+   
     public Key max() {
         if (isEmpty()) {
             throw new NoSuchElementException("La cola de prioridad está vacía.");
@@ -73,28 +78,28 @@ public class MaxPQ<Key extends Comparable<Key>> {
     }
 
     private void swim(int k) {
-        while (k > 1 && less(k / 2, k)) {
-            exch(k, k / 2);
-            k = k / 2;
-        }
+    while (k > 1 && less(k / 2, k)) {
+        exch(k, k / 2);
+        k = k / 2;
     }
+}
 
-    private void sink(int k) {
-        while (2 * k <= n) {
-            int j = 2 * k;
-            if (j < n && less(j, j + 1)) {
-                j++;
-            }
-            if (!less(k, j)) {
-                break;
-            }
-            exch(k, j);
-            k = j;
+private void sink(int k) {
+    while (2 * k <= n) {
+        int j = 2 * k;
+        if (j < n && less(j, j + 1)) {
+            j++;
         }
+        if (!less(k, j)) {
+            break;
+        }
+        exch(k, j);
+        k = j;
     }
+}
 
     private boolean less(int i, int j) {
-        return pq[i].compareTo(pq[j]) < 0;
+        return pq[i].compareTo(pq[j]) > 0;
     }
 
     private void exch(int i, int j) {
@@ -110,17 +115,17 @@ public class MaxPQ<Key extends Comparable<Key>> {
         }
         pq = temp;
     }
-   public String toString() {
-    StringBuilder sb = new StringBuilder();
-    sb.append("[");
-    for (int i = 1; i <= n; i++) {
-        sb.append(pq[i]);
-        if (i < n) {
-            sb.append(", ");
+
+    public String toString() {
+        StringBuilder sb = new StringBuilder();
+        sb.append("[");
+        for (int i = 1; i <= n; i++) {
+            sb.append(pq[i]);
+            if (i < n) {
+                sb.append(", ");
+            }
         }
+        sb.append("]");
+        return sb.toString();
     }
-    sb.append("]");
-    return sb.toString();
-}
-    
 }
